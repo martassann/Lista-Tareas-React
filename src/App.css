@@ -97,3 +97,47 @@ h1 {
 .tarea button:hover {
   transform: scale(1.2);
 }
+
+
+@media (max-width: 768px) {
+  .tarjeta {
+    padding: 20px;
+  }
+
+  .formulario {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formulario input[type="text"],
+  .formulario input[type="date"],
+  .formulario button {
+    width: 100%;
+    min-width: unset;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .tarea {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tarea button {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta {
+    width: 95%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}

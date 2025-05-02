@@ -6,19 +6,23 @@ function App() {
   const [nuevaTarea, setNuevaTarea] = useState('');
   const [fechaInicio, setFechaInicio] = useState('');
   const [fechaVencimiento, setFechaVencimiento] = useState('');
+  const [cargadoDesdeStorage, setCargadoDesdeStorage] = useState(false);
 
-  // Leer tareas de localStorage al iniciar
   useEffect(() => {
-    const tareasGuardadas = localStorage.getItem('tareas');
-    if (tareasGuardadas) {
-      setTareas(JSON.parse(tareasGuardadas));
+    if (!cargadoDesdeStorage) {
+      const tareasGuardadas = localStorage.getItem('tareas');
+      if (tareasGuardadas) {
+        setTareas(JSON.parse(tareasGuardadas));
+      }
+      setCargadoDesdeStorage(true); // Evita que vuelva a cargar
     }
-  }, []);
+  }, [cargadoDesdeStorage]);
 
-  // Guardar tareas en localStorage cada vez que cambian
   useEffect(() => {
-    localStorage.setItem('tareas', JSON.stringify(tareas));
-  }, [tareas]);
+    if (cargadoDesdeStorage) {
+      localStorage.setItem('tareas', JSON.stringify(tareas));
+    }
+  }, [tareas, cargadoDesdeStorage]);
 
   const agregarTarea = () => {
     if (!nuevaTarea.trim() || !fechaInicio || !fechaVencimiento) return;
@@ -30,14 +34,14 @@ function App() {
       fechaVencimiento,
     };
 
-    setTareas([...tareas, nueva]);
+    setTareas((prev) => [...prev, nueva]);
     setNuevaTarea('');
     setFechaInicio('');
     setFechaVencimiento('');
   };
 
   const eliminarTarea = (id) => {
-    setTareas(tareas.filter((tarea) => tarea.id !== id));
+    setTareas((prev) => prev.filter((tarea) => tarea.id !== id));
   };
 
   const esVencida = (fecha) => {
