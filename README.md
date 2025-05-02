@@ -20,3 +20,4 @@ Aplicación web desarrollada con **React** que permite a los usuarios gestionar 
 
 ## 📷 Captura de pantalla
 
+![image](https://github.com/user-attachments/assets/59393982-f66f-4f32-b156-02a1b4cbde46)
