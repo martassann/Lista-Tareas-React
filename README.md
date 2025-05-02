@@ -9,7 +9,7 @@ Aplicación web desarrollada con **React** que permite a los usuarios gestionar 
 - 🔴 Indicador visual para tareas vencidas  
 - 🗑 Eliminar tareas fácilmente con un botón intuitivo  
 - 🎯 Diseño centrado, moderno y responsivo  
-- 🌈 Estética profesional con fondo desenfocado y sombras suaves  
+- 🌈 Estética profesional con fondo pc
 
 ## 🛠 Tecnologías utilizadas
 
