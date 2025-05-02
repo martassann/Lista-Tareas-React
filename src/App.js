@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -6,6 +6,19 @@ function App() {
   const [nuevaTarea, setNuevaTarea] = useState('');
   const [fechaInicio, setFechaInicio] = useState('');
   const [fechaVencimiento, setFechaVencimiento] = useState('');
+
+  // Leer tareas de localStorage al iniciar
+  useEffect(() => {
+    const tareasGuardadas = localStorage.getItem('tareas');
+    if (tareasGuardadas) {
+      setTareas(JSON.parse(tareasGuardadas));
+    }
+  }, []);
+
+  // Guardar tareas en localStorage cada vez que cambian
+  useEffect(() => {
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+  }, [tareas]);
 
   const agregarTarea = () => {
     if (!nuevaTarea.trim() || !fechaInicio || !fechaVencimiento) return;
